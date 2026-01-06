@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Oppgave 2</title>
+</head>
+<body>
+    <div>
+        <h3>Legg til filmer</h3>
+        <div id="listContainer">
+            <div class="titleContainerId">
+                <label id="titleLabel">Tittel</label> <!-- Brukte label husker vi lærte at det var mer riktig ift inputfelt-->
+                <input type="text" id="titleField">
+            </div>
+            <div class="categoryContainer">
+                <label id="categoryLabel">Kategori</label>
+                <input type="text" id="categoryField">
+            </div>
+        </div>
+        <h4 id="movieTag">Antall filmer i array: 0</h4>
+        <h4 id="messageTag">Ingen feilmeldinger enda.</h4>
+        <button id="button1">Legg til film i array</button>
+        <button id="button2">Vis alle filmene som er lagt til i array</button>
+        <div id="movieListId"></div>
+    </div>
+
+    <script>
+ // Henter HTML inn i JS
+        const titleField = document.getElementById("titleField");
+        const categoryField = document.getElementById("categoryField");
+        const moviesInArray = document.getElementById("movieTag");
+        const errorMessage = document.getElementById("messageTag");
+        const buttonOne = document.getElementById("button1");
+        const buttonTwo = document.getElementById("button2");
+        const movieListContainer = document.getElementById("movieListId");
+        const listContainer = document.getElementById("listContainer");
+//Style
+        listContainer.style.display = "flex";
+// Array 
+        let moviesAdded = [];
+// Funksjon for å legge til en film i arrayen
+        function addMovie() {
+            const title = titleField.value.trim();
+            const category = categoryField.value.trim();
+
+            if (title === "" || category === "") {
+                errorMessage.innerHTML = "FEIL: fyll ut både tittel og kategori! Denne feilmeldingen tilbakestilles om 3 sekunder.";
+                errorMessage.style.color = "red";
+                setTimeout(() => {
+                    errorMessage.innerHTML = "Ingen feilmeldinger enda.";
+                    errorMessage.style.color = "";
+                }, 3000);
+            } else {
+                moviesAdded.push({ Tittel: title, Kategori: category });
+                moviesInArray.innerHTML = `Antall filmer i array: ${moviesAdded.length}`;
+
+                errorMessage.innerHTML = `Siste film lagt til: ${title}`;// Tileggs funksjon
+                errorMessage.style.color = "green"; // Tileggs funksjon
+
+                titleField.value = "";
+                categoryField.value = "";
+            }
+        }
+// Funksjon for å vise filmer som er lagt til
+        function showMovies() {
+            if (moviesAdded.length === 0) {
+                errorMessage.innerHTML = "Ingen filmer i arrayet.";
+                errorMessage.style.color = "red";
+                setTimeout(() => {
+                    errorMessage.innerHTML = "Ingen feilmeldinger enda.";
+                    errorMessage.style.color = "";
+                }, 3000);
+            } else {
+                movieListContainer.innerHTML = "";
+                let movieList = document.createElement("ul");
+ // Går gjennom alle filmene og lager liste
+                for (let i = 0; i < moviesAdded.length; i++) {
+                    let li = document.createElement("li");
+
+                    let titleT = document.createElement("p");
+                    titleT.innerHTML = moviesAdded[i].Tittel;
+                    titleT.style.fontWeight = "bold";
+                    titleT.style.fontSize = "20px";
+
+                    let categoryT = document.createElement("p");
+                    categoryT.innerHTML = moviesAdded[i].Kategori;
+                    categoryT.style.fontSize = "15px";
+
+                    li.appendChild(titleT);
+                    li.appendChild(categoryT);
+                    movieList.appendChild(li);
+                }
+
+                movieListContainer.appendChild(movieList);
+            }
+        }
+// Knapper
+        buttonOne.onclick = addMovie;
+        buttonTwo.onclick = showMovies;
+
+             // Tileggs funksjonen min er at når du adder en film, så blir teksten grønn.
+        // La til teksten: (Siste film lagt til) i error message når den blir grønn
+        // istedenfor syntes det var ryddigere.
+        // Kunne lagt til en style.gap mellom input feltet og kategori men tenkte at det kanskje ble overkill?
+
+    </script>
+</body>
+</html>

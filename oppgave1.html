@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Baby vil ha...</title>
+    <style>
+      /*IKKE LOV Å ENDRE CSS!*/
+      #container {
+        position: relative;
+        width: 800px;
+        height: 550px;
+        border: 1px solid rgb(30, 30, 30);
+        margin: auto;
+      }
+      img {
+        position: absolute;
+      }
+      .syot {
+        height: 150px;
+      }
+      #jlpb {
+        bottom: 0;
+        left: 300px;
+      }
+      #inp {
+        position: absolute;
+        left: 250px;
+      }
+      span,
+      input,
+      button {
+        font-size: 1.3rem;
+      }
+     
+    </style>
+  </head>
+  <body>
+    
+    <div id="container">
+      <img id="jlpb" src="images/jlpb.png" />
+      <img id="tac-x" src="images/cat.png" class="syot" />
+      <img id="eddap-x" src="images/eskilpadde.png" class="syot" />
+      <img id="gnidliub-x" src="images/building-2.png" class="syot" />
+      <div id="inp">
+        <input id="gft-txt" type="text" placeholder="Hva vil du gi babyen?" />
+        <button id="give-gft-btn">Gi babyen det i tekstboksen</button>
+        <br />
+        <span id="llatna-x">Antall ting igjen å gi babyen: 3</span>
+      </div>
+    </div>
+    
+
+    <script>
+      // HER SKAL DU/DERE KODE JAVASCRIPT (IKKE I EKSTERN FIL)!
+      // Henter HTML inn i JS 
+      let inputField = document.getElementById("gft-txt");
+  const buttonId = document.getElementById("give-gft-btn");
+
+  const turtleImg = document.getElementById("eddap-x");
+  const houseImg = document.getElementById("gnidliub-x");
+  const catImg = document.getElementById("tac-x");
+
+  let conteiner = document.getElementById("inp")
+  let remaininGifts = 3;
+// Lager p tag/tekst  som kommer når du begynner å gi gaver
+  let pTag = document.createElement("p");
+  pTag.innerHTML = "Du må gi alle 3 gavene til babyen";
+  pTag.style.display = "none";
+  conteiner.appendChild(pTag);
+
+
+ // Oppdaterer tekst/gaver
+  function updateGifts() {
+    document.getElementById("llatna-x").innerHTML = `Antall ting igjen å gi babyen: ${remaininGifts}`;
+  }
+// Sjekker om det er 0 gaver igjen funksjon tekst kommer opp hvis ja
+  function checkGifts() {
+    if (remaininGifts === 0) {
+    pTag.style.display = "none";
+     conteiner.innerHTML = " Babyen er meget fornøyd med de 3 gavene! :)";
+     conteiner.style.color = "red"
+     conteiner.style.fontSize = "30px"
+     addedFunction();
+    }
+  }
+// Funksjon for knappen som flytter bildene, basert på input
+  function buttonField() {
+    let userInput = inputField.value.trim().toLowerCase();
+
+    if (userInput === "turtle") {
+      turtleImg.style.bottom = "0px";
+      turtleImg.style.right = "0px";
+      remaininGifts--;
+       pTag.innerHTML = "Du må gi alle 3 gavene til babyen";
+      
+     
+
+    } else if (userInput === "house") {
+      houseImg.style.bottom = "0px";
+      houseImg.style.right = "0px";
+      remaininGifts--;
+    } else if (userInput === "cat") {
+      catImg.style.bottom = "0px";
+      catImg.style.right = "0px";
+      remaininGifts--;
+    } else {
+      alert(`${userInput}, er ikke blandt de 3 gavene du kan gi babyen!`);
+    }
+// Kaller på funksjonene
+    updateGifts();
+    checkGifts();
+    pTagFunction();
+    inputField.value = "";
+    
+  }
+//  funksjon som viser tekst hvis det fortsatt er gaver igjen.
+  function pTagFunction() {
+    if (remaininGifts > 0) {
+    pTag.style.display = "block";  
+        
+    }
+
+    
+  }
+// Tileggs funksjon
+  function addedFunction() {
+    
+    turtleImg.style.display = "none";
+    houseImg.style.display = "none";
+    catImg.style.display = "none";
+  }
+
+  updateGifts();
+  
+// Knapp
+  buttonId.onclick = buttonField;
+
+  // Tillegg funksjonen min er at alle gavene forsvinner når babyen har mottat alle gavene.
+
+    </script>
+  </body>
+</html>
