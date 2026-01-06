@@ -6,7 +6,7 @@ To interaktive programmer bygget med grunnleggende JavaScript-teknikker:
 1. **Gi babyen gaver** – Et lite spill hvor brukeren skal gi babyen 3 spesifikke gaver (Katt, Skilpadde og Bygning).
 2. **Filmadmin** – En enkel CRUD-applikasjon for å legge til og vise filmer med tittel og kategori.
 
-## Teknologier
+## Kode
 - JavaScript
 - HTML
 - CSS
