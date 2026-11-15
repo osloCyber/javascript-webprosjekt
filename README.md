@@ -1,15 +1,22 @@
-# JavaScript Webprosjekt
+# JavaScript-webprosjekt
 
-## Om prosjektet
-To interaktive programmer bygget med grunnleggende JavaScript-teknikker:
+To interaktive nettprogrammer laget med grunnleggende JavaScript. Skoleprosjekt ved Høyskolen Kristiania.
 
-1. **Gi babyen gaver** – Et lite spill hvor brukeren skal gi babyen 3 spesifikke gaver (Katt, Skilpadde og Bygning).
-2. **Filmadmin** – En enkel CRUD-applikasjon for å legge til og vise filmer med tittel og kategori.
+## Programmene
 
-## Kode
+1. **Gi babyen gaver:** Et lite spill der brukeren skal gi babyen tre bestemte gaver: katt, skilpadde og bygning.
+2. **Filmadmin:** En enkel app for å legge til og vise filmer med tittel og kategori.
+
+## Teknologi
+
 - JavaScript
 - HTML
 - CSS
 
 ## Læringsmål
-Prosjektet demonstrerer bruk av variabler, funksjoner, arrays, objekter, DOM-manipulering, if/else-betingelser og for-løkker.
+
+Prosjektet viser bruk av variabler, funksjoner, arrays, objekter, DOM-manipulering, if/else og for-løkker.
+
+## Se programmene
+
+Last ned repoet og åpne `oppgave1.html` og `oppgave2.html` i nettleseren.
